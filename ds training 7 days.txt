@@ -1,0 +1,276 @@
+#include<stdio.h>
+
+int main() {
+    int position;
+    int arr[10] = {1, 2, 3, 4, 5};
+    int element = 10;
+    int size = 5; 
+
+    printf("Enter position: ");
+    scanf("%d", &position);
+
+    printf("Before the insertion:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]); 
+    }
+
+    if (position < 0 || position > size) {
+        printf("\nInvalid position\n");
+        
+    }
+
+    for (int i = size - 1; i >= position; i--) {
+        arr[i + 1] = arr[i];
+    }
+
+    arr[position] = element; 
+    size++; 
+
+    printf("\nAfter the insertion:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0; 
+}
+
+
+
+
+/////////deletion///
+#include <stdio.h>
+
+int main() {
+    int array[10] = {1, 2, 3, 4, 5};
+    int size = 5;
+    int position = 2;
+
+    printf("Array before deletion: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+
+    if (position < 0 || position >= size) {
+        printf("\nInvalid position\n");
+        
+    }
+
+   
+    for (int i = position; i < size - 1; i++) {
+        array[i] = array[i + 1];
+    }
+
+    size--; 
+
+    printf("\nUpdated array after deletion: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+
+    return 0;
+}
+
+searching.
+
+#include <stdio.h>
+#include<conio.h>
+int main()
+{
+   int ar[10],i,n,ele;
+   printf("enter array size: ");
+   scanf("%d",&n);
+   printf("enter the elemnt:");
+   for(int i=0;i<n;i++){
+       scanf("%d",&ar[i]);
+   }
+   printf("enter the elemnt to be search: ");
+   scanf("%d",&ele);
+
+   for(int i=0;i<n;i++){
+       if(ar[i]==ele){
+           printf("%d found at position %d",ele,i+1);
+           return 0;
+       }
+   }
+   
+}
+class TreeNode{
+    int data;
+    TreeNode left;
+    TreeNode right;
+    //constructor
+public TreeNode(int data){
+    data=data;
+    left=null;
+    right=null;
+}
+}
+
+import java.util.Scanner;
+
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
+
+    // Constructor
+    public TreeNode(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class BinaryTree {
+    TreeNode root;
+
+    // Constructor using Main class passing the parameter
+    public BinaryTree(int rootData) {
+        this.root = new TreeNode(rootData);
+    }
+
+    // Method for invoking insert
+public void insert(int data) {
+        root = insertVal(root, data);
+    }
+
+    private TreeNode insertVal(TreeNode root, int data) {
+        if (root == null) {
+            root = new TreeNode(data);
+            return root;
+        }
+        if (data < root.data) {
+            root.left = insertVal(root.left, data);
+        } else {
+            if (data > root.data) {
+                root.right = insertVal(root.right, data);
+            }
+            // return root; // Remove this line from he
+Pavithra Kannan2:07 PM
+// Order-wise allocate
+    public void InOrder() {
+        InOrderVal(root);
+    }
+
+    private void InOrderVal(TreeNode root) {
+        if (root != null) {
+            InOrderVal(root.left);
+            System.out.print(root.data + " "); // Removed ln for a cleaner output
+            InOrderVal(root.right);
+        }
+    }
+
+
+        
+    }
+
+    }
+
+
+pre order
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
+
+    public TreeNode(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class BinaryTree {
+    TreeNode root;
+
+    public BinaryTree(int rootData) {
+        this.root = new TreeNode(rootData);
+    }
+
+    public void insert(int data) {
+        root = insertVal(root, data);
+    }
+
+    private TreeNode insertVal(TreeNode root, int data) {
+        if (root == null) {
+            root = new TreeNode(data);
+            return root;
+        }
+        if (data < root.data) {
+            root.left = insertVal(root.left, data);
+        } else if (data > root.data) {
+            root.right = insertVal(root.right, data);
+        }
+        return root;
+    }
+
+    public void preOrder() {
+        preOrderVal(root);
+    }
+
+    private void preOrderVal(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.data + " ");
+            preOrderVal(root.left);
+            preOrderVal(root.right);
+        }
+    }
+}
+
+///graph///DFS
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class GraphBFS {
+    private int V; //number of vertices
+    private LinkedList<Integer>[] adjList; //Adjacency list representation
+
+    public GraphBFS(int v) {
+        V = v;
+        adjList = new LinkedList[v];
+        for (int i = 0; i < v; ++i)
+            adjList[i] = new LinkedList<>();
+    }
+
+    // Function to add an edge to the graph
+    void addEdge(int v, int w) {
+        adjList[v].add(w);
+    }
+// Function for BFS traversal 
+    void BFS(int s) {
+        boolean[] visited = new boolean[V]; 
+        Queue<Integer> queue = new LinkedList<>(); // Create a queue for BFS
+
+        visited[s] = true;
+        queue.add(s);
+
+        while (!queue.isEmpty()) {
+            s = queue.poll();
+            System.out.print(s + " ");
+Pavithra Kannan10:15 AM
+//Loop for search the possibility value nearby
+            for(int neighbor:adjList[s] ) {
+            	if(!visited[neighbor]) {
+            		visited[neighbor]=true;
+            		queue.add(neighbor);
+            		}
+            }
+        }
+    }
+//main
+    public static void main(String fhd[]) {
+    	GraphBFS g=new  GraphBFS(4);
+    	g.addEdge(0,1);
+    	g.addEdge(0,3);
+    	g.addEdge(1,2);
+    	g.addEdge(2,0);
+    	g.addEdge(2,3);
+    	g.addEdge(3,1);
+    	
+    	System.out.println("Strating vertex: ");
+    	g.BFS(2);
+    	
+    	
+    }
+    	
+    }
